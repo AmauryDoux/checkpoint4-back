@@ -1,5 +1,10 @@
 package com.sabso.advertisement.Entities;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import com.fasterxml.jackson.annotation.JsonIdentityReference;
+import com.fasterxml.jackson.annotation.ObjectIdGenerators;
+
 import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
@@ -14,6 +19,7 @@ public class Screen {
     private Boolean hasAds;
     private String address;
 
+    @JsonBackReference
     @ManyToOne(fetch = FetchType.LAZY)
     private Client client;
 
@@ -21,6 +27,11 @@ public class Screen {
     @JoinTable(name = "screen_ads",
             joinColumns = { @JoinColumn(name = "fk_screen") },
             inverseJoinColumns = { @JoinColumn(name = "fk_advert") })
+    @JsonIdentityInfo(
+            scope = Screen.class,
+            generator = ObjectIdGenerators.PropertyGenerator.class,
+            property = "id")
+    @JsonIdentityReference(alwaysAsId = true)
     private List<Advert> advertList = new ArrayList<Advert>();
 
     // Constructor

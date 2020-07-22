@@ -19,12 +19,12 @@ public class ClientController {
     }
 
     @PostMapping("/")
-    public void postAdverts(@RequestBody Client client) {
+    public void postClients(@RequestBody Client client) {
         service.save(client);
     }
 
     @PutMapping("/{id}")
-    public Client updateAdvert(@RequestBody Client newClient, @PathVariable Long id) {
+    public Client updateClient(@RequestBody Client newClient, @PathVariable Long id) {
         return service.updateClient(newClient, id);
     }
 

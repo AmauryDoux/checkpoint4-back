@@ -1,5 +1,10 @@
 package com.sabso.advertisement.Entities;
 
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import com.fasterxml.jackson.annotation.JsonIdentityReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+import com.fasterxml.jackson.annotation.ObjectIdGenerators;
+
 import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
@@ -13,6 +18,7 @@ public class Client {
     private String name;
     private String address;
 
+    @JsonManagedReference
     @OneToMany(
             mappedBy = "client",
             cascade = CascadeType.ALL,
@@ -24,6 +30,11 @@ public class Client {
     @JoinTable(name = "client_ads",
             joinColumns = { @JoinColumn(name = "fk_client") },
             inverseJoinColumns = { @JoinColumn(name = "fk_advert") })
+    @JsonIdentityInfo(
+            scope = Client.class,
+            generator = ObjectIdGenerators.PropertyGenerator.class,
+            property = "id")
+    @JsonIdentityReference(alwaysAsId = true)
     private List<Advert> advertList = new ArrayList<Advert>();
 
     // Constructor
