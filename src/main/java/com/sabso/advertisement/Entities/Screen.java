@@ -67,4 +67,12 @@ public class Screen {
     public void setClient(Client client) {
         this.client = client;
     }
+
+    public List<Advert> getAdvertList() {
+        return advertList;
+    }
+
+    public void setAdvertList(List<Advert> advertList) {
+        this.advertList = advertList;
+    }
 }

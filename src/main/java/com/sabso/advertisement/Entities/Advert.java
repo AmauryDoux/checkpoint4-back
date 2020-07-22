@@ -38,5 +38,20 @@ public class Advert {
         this.name = name;
     }
 
+    public List<Screen> getScreenList() {
+        return screenList;
+    }
+
+    public void setScreenList(List<Screen> screenList) {
+        this.screenList = screenList;
+    }
+
+    public List<Client> getClientList() {
+        return clientList;
+    }
+
+    public void setClientList(List<Client> clientList) {
+        this.clientList = clientList;
+    }
 }
 

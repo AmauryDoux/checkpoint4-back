@@ -14,7 +14,7 @@ public class Client {
     private String address;
 
     @OneToMany(
-            mappedBy = "post",
+            mappedBy = "client",
             cascade = CascadeType.ALL,
             orphanRemoval = true
     )
@@ -61,5 +61,13 @@ public class Client {
 
     public void setScreen(List<Screen> screen) {
         this.screen = screen;
+    }
+
+    public List<Advert> getAdvertList() {
+        return advertList;
+    }
+
+    public void setAdvertList(List<Advert> advertList) {
+        this.advertList = advertList;
     }
 }
